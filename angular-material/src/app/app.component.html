@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- menu -->
+<button mat-button [mat-menu-trigger-for]="appMenu">Menu</button>
+<button mat-icon-button [matMenuTriggerFor]="appMenu">
+  <mat-icon>more_vert</mat-icon>
+</button> 
+<div>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="log()">Help</button>
+    <button mat-menu-item>About</button>
+  </mat-menu>
+</div>
+
+<!-- buttons -->
+ <div> 
+  <button mat-button>mat-button</button>
+  <button mat-raised-button>mat-raised-button</button>
+  <button mat-icon-button>mat-icon-button</button>
+  <button mat-fab>mat-fab-button</button>
+  <button mat-mini-fab>mat-mini-fab-button</button>
+</div>
+
+<!-- table -->
+<mat-table [dataSource]="anArray">
+
+  <mat-header-row *matHeaderRowDef="colsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let anArray; columns: colsToDisplay"></mat-row>  
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let anArray"> {{anArray.id}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let anArray"> {{anArray.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="age">
+    <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+    <mat-cell *matCellDef="let anArray"> {{anArray.age}} </mat-cell>
+  </ng-container>
+</mat-table>
+
+<router-outlet></router-outlet>
